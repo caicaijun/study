@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="/public/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/public/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="/public/manage/css/xenon-core.css">
+	<script src="/public/manage/js/jquery-1.11.1.min.js"></script>
+	<script src="/public/manage/js/system.js"></script>
+    <script src="/public/layer/layer.js"></script>
+</head>
+<body class="page-body">
+
+	<div class="page-container">
+
+		{include file='Common/web_menu' }
+		
+		<div class="main-content">
+
+			{include file='Common/web_header' }
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">添加新广告</h3>
+							<button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='{:url('ad/adadd')}'">
+                            	<i class="fa-plus"></i><span>添加广告</span>
+                            </button>
+						</div>
+						<div class="panel-body">
+
+                    <table width="100%" cellspacing="0" class="table table-small-font table-bordered table-striped">
+                   <thead>
+		                   <tr role="row">
+                               <th width="80">广告id</th>
+                             <th width="160">广告位置</th>
+		                     <th width="200">广告名称</th>	
+			                   <th width="200">广告图片</th>	                   
+		                     <th>广告链接</th>
+                               <!--<th width="80">新窗口</th>-->
+		                  	   <th width="100">排序</th>
+	                  	     <th width="160">操作</th>
+                     </tr>
+		                 </thead>
+						<tbody>
+                          {volist name="list" id="vo" }
+                             <tr role="row">    
+                             <td>{$vo.ad_id}</td>
+                             <td>{$cate[$vo['pid']][0]['position_name']}</td>
+		                     <td>{$vo.ad_name}</td>	                    
+		                     <td><if condition="!empty($vo['ad_pic'])"><img alt="{$vo.ad_name}" src="PUBLIC_IMG{$vo.ad_pic}" width="80px" height="50px"></if></td>
+		                     <td>{$vo.ad_link}</td>
+		                     <!--<td>
+                              <img width="20" height="20" data-url="__MODULE__/System/changeTableVal" src="__PUBLIC__/manage/images/<if condition='$vo[target] eq 1'>yes.png<else />/cancel.png</if>" onClick="changeTableVal('ad','ad_id','{$vo.ad_id}','target',this)"/>
+		                     </td>-->
+		                     <td>
+                             	<input onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onChange="updateSort(this)" data-id="{$vo.ad_id}" data-url="{:url('ad/adsort')}" data-id="{$vo.ad_id}" size="4" class="common-input form-control form-w100" value="{$vo.sort}" type="text">    	
+		                     </td>
+		                     <td>
+		                     	<a onClick="delfuncs(this)" data-url="{:url('ad/addel',['ad_id' => $vo['ad_id']])}" data-id="{$vo.ad_id}" class="btn btn-danger btn-sm btn-icon pull-right">删除</a>
+		                     	<a href="{:url('ad/adedit', ['ad_id' => $vo['ad_id']])}" class="btn btn-success btn-sm btn-icon pull-right">修改</a>
+				     		</td>
+		                   </tr>
+		                  {/volist}
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+
+						 {$list->render()}
+						
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			
+            
+    {include file='Common/web_footer' }
+            
+</div>		
+</div>
+</body>
+</html>

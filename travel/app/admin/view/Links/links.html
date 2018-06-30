@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/xenon-core.css">
+	<script src="__PUBLIC__/common/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/check/jquery.validate.js"></script>
+    <script src="__PUBLIC__/check/jquery.addvalidate.js"></script>
+    <LINK href="__PUBLIC__/check/validate.css" rel=stylesheet>
+    <script src="__PUBLIC__/manage/js/form.js"></script>
+    <script src="__PUBLIC__/manage/js/imgupload.js"></script>
+</head>
+<body class="page-body">
+
+
+	
+	<div class="page-container">
+		<include file='Common/web_menu' />
+		
+		<div class="main-content">
+			
+            
+            
+			<include file='Common/web_header' />
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">友情链接列表</h3>
+							
+							
+						</div>
+						<div class="panel-body">
+							   
+      
+                            
+                            <button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='__CONTROLLER__/Linkslist'">
+                            	<i class="fa-mail-reply"></i><span>返回列表</span>
+                            </button>
+                        
+           				<form method="post" id="addeditform" class="addeditform" action="{:U('Yxadmin/Links/linksHandle')}"  enctype="multipart/form-data">  
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td class="col-sm-2">链接名称：</td>
+                                    <td class="col-sm-8">
+                                        <input type="text" class="form-control" name="links_name" value="{$info.links_name|default=""}" ><em style="color:red;">*必填</em>
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>选择上级：</td>
+                                    <td>
+                                        <select name="pid" class="input-sm">
+                                            <volist name="position" id="item">
+                                                <option value="{$item.position_id}" <if condition="$info[pid] eq $item[position_id]">selected</if>>{$item.position_name}</option>
+                                           </volist>                  
+                                        </select>
+                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>链接地址：</td>
+                                    <td><input type="text" class="form-control" name="links_link" value="{$info.links_link}"><em style="color:red;">*必填-域名前请加 http://</em></td>
+                                </tr> 
+                                <tr>
+                                    <td>广告图片：</td>
+                                    <td>
+                      					<div class="col-sm-3">
+                                        	 <input type="file" class="btn btn-default"  name="pic"  id="pic" value="上传图片" style="float: left;"/>
+                                        	 <img id="preview"  style=" height:50px;" onClick="file_upload.click()" >
+                                             <if condition="$info['links_pic'] neq ''"><img width="100" height="50" src="__ROOT__/{$info.links_pic}"/></if>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>广告描述</td>
+                                    <td><textarea class="form-control" cols="5" id="ad_desc" name="links_desc" ></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>默认排序：</td>
+                                    <td><input type="text" class="input-sm" name="orderby" value="{$info.orderby|default="50"}" required></td>
+                                </tr>                                
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                	<td>
+                                    	<input type="hidden" name="act" value="{$act}">
+                                        <input type="hidden" name="links_id" value="{$info.links_id}">
+                                    </td>
+                                	<td class="text-right"><input class="btn btn-primary" type="submit" value="保存"></td></tr>
+                                </tfoot>                               
+                            </table>
+						</form>
+						
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			
+            
+    <include file='Common/web_footer' />
+            
+</div>		
+</div>
+ 
+</body>
+</html>

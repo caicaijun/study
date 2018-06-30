@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Xenon Boostrap Admin Panel" />
+    <meta name="author" content="" />
+    <title>印象未来网站管理系统</title>
+    <style>
+
+        .introduce{
+            height: 340px;
+            width: 100%;
+            box-sizing: border-box;
+
+        }
+        .introduce_left{
+            box-sizing: border-box;
+            width: 70%;
+            height:100%;
+            float:left;
+            text-align: center;
+            background-color: #fff;
+            padding: 100px;
+            box-shadow:2px 2px 5px #888888;
+        }
+        .introduce_left h2{
+            color:#70B8F3;
+        }
+        .introduce_left span{
+            color:#AFAFAF;
+            font-size: 14px;
+        }
+        .introduce_right{
+            box-sizing: border-box;
+            margin-left:8px;
+            width: 28%;
+            height:100%;
+            float:right;
+        }
+        .introduce_right_top{
+            box-sizing: border-box;
+            width: 100%;
+            height: 52%;
+            margin-bottom: 36px;
+            background-color: #B8DFFF;
+            box-shadow:2px 2px 5px #888888;
+        }
+        .introduce_right_bottom{
+            box-sizing: border-box;
+            width: 100%;
+            height: 36%;
+            box-shadow:2px 2px 5px #888888;
+
+        }
+        .news{
+            width: 100%;
+            height: auto;
+            margin-top:30px;
+        }
+        .news_left{
+            box-sizing: border-box;
+            width: 50%;
+            height: auto;
+            display: inline-block;
+            box-shadow:2px 2px 5px #888888;
+            background-color: #fff;
+        }
+        .news_right{
+            box-sizing: border-box;
+            width: 46%;
+            height: auto;
+            float:right;
+            margin-left: 36px;
+            box-shadow:2px 2px 5px #888888;
+            background-color: #fff;
+        }
+        .news_right ul a,.news_left ul a{
+            display: block;
+            height: 36px;
+            width: 100%;
+            line-height: 36px;
+            font-size: 14px;
+            list-style: none;
+            color:#757575;
+        }
+        .news_right ul li,.news_left ul li{
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            padding-left: 10px;
+        }
+        .news_right ul,.news_left ul{
+            padding:0px;
+        }
+         .news_right h3, .news_left h3{
+             color:#70B8F3;
+             margin:0;
+             padding:14px;
+             padding-left:26px;
+             background-color: #EEEEEE;
+         }
+        .week{
+            box-sizing: border-box;
+            width: 48%;
+            height: 100%;
+            background-color: #70B8F3;
+            display: inline-block;
+            color:#fff;
+            text-align: center;
+            padding:30px;
+        }
+        .week p,.week h2,.time p,.time h2{
+            box-sizing: border-box;
+            width: 100%;
+            height: 50%;
+            margin:0;
+        }
+        .week p{
+            box-sizing: border-box;
+            color:#fff;
+            font-size: 16px;
+        }
+        .time p{
+            box-sizing: border-box;
+            font-size: 36px;
+            color:#70B8F3;
+        }
+        .week .day{
+            box-sizing: border-box;
+            font-size: 36px;
+        }
+        .time{
+            box-sizing: border-box;
+            width: 50%;
+            height: 100%;
+            display: inline-block;
+            padding:20px;
+            background-color: #fff;
+            color: #70B8F3;
+            padding:30px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/public/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/manage/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/manage/css/xenon-core.css">
+    <script src="/public/common/js/jquery.min.js"></script>
+    <script src="/public/check/jquery.validate.js"></script>
+    <script src="/public/manage/js/form.js"></script>
+    <script src="/public/layer/layer.js"></script>
+</head>
+<body class="page-body" style='min-width:1500px;'>
+    
+    <div class="page-container">
+        {include file="Common/web_menu" /}
+        
+        <div class="main-content">
+
+            {include file="Common/web_header" /}
+            <!-- Responsive Table -->
+            <div class="introduce">
+                <div class="introduce_left">
+                    <h2>欢迎进入印象未来网站管理系统</h2>
+                    <hr style='width: 50%;'/>
+                    <span>祝您快乐每一天，工作顺利，心想事成！</span>
+                </div>
+                <div class="introduce_right">
+                    <div class="introduce_right_top">
+                        <iframe style='margin:30px;'allowtransparency="true" frameborder="0" width="290" height="96" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=2&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=290&h=96&align=center"></iframe>
+                    </div>
+                    <div class="introduce_right_bottom">
+                        <div class="week">
+                        <h2></h2>
+                            <p><span class='month'></span>月 <span class='day'></span>日</p>
+                        </div>
+                        <div class="time">
+                            <h2></h2>
+                            <p><span class='hour'></span>: <span class='minutes'></span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- 最新文章-->
+
+            <div class="news">
+
+                <div class="news_left hello">
+                    <h3>最新文章</h3>
+                    <ul>
+                    <foreach name="article" item="art">
+                        <a href=""><li>测试标题<span style="float:right;margin-right:5px;">2018-6-30</span></li></a>
+                    </foreach> 
+                    </ul>
+                </div>
+                <div class="news_right  hello">
+                    <h3>最新留言</h3>
+                    <ul>
+                    <foreach name="message" item="mes">
+                        <a href="">&nbsp;姓名：菜菜君 - 电话：18866669999 - 内容：测试一下子啦！<span style="float:right;margin-right:5px;">1997-8-3</span></a>
+                    </foreach>
+                    </ul>
+                </div>
+            </div>
+    {include file="Common/web_footer" /}
+            
+</div>      
+</div>
+    <script>
+       $(function(){
+           $('.hello>ul>a:even').css({"backgroundColor":"#fff","height":"46px","lineHeight":"46px"});
+           $('.hello>ul>a:odd').css({"backgroundColor":"#EEEEEE"});
+       })
+       $(function(){
+           var mydate=new Date();
+           var myddy=mydate.getDay();
+           var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+           $(".week>h2").text(weekday[myddy]);
+           var month = mydate.getMonth()+1;
+           $(".week>p>.month").text(month);
+           var day = mydate.getDate();
+           $(".week>p>.day").text(day);
+           var hours=mydate.getHours();
+           $(".time>p>.hour").text(hours);
+           var minutes=mydate.getMinutes();
+           $(".time>p>.minutes").text(minutes);
+           if(hours>=12){
+               $(".time>h2").text("PM");
+           }else{
+               $(".time>h2").text("AM");
+           }
+           if(minutes<=9){
+               $(".time>p>.minutes").text("0"+minutes);
+           }
+       })
+
+    </script>
+
+</body>
+</html>

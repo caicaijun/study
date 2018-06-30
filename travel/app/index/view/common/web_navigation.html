@@ -1,0 +1,40 @@
+	<!--header-->
+	<div class="container">
+		<div class="logo">
+			<a href="index.html"><img src="/public/pc/images/logo.png" alt="" /></a>
+		</div>
+		<a href="#mmenu" class="phone-nav"><i class="fa fa-list"></i></a>
+		<div class="logo_right">
+			<nav class="nav">
+				<ul>
+					<li><a href="{:url('index/index')}" <?php if(strstr('index', $request->action())){ ?> class="active"  <?php } ?> >首页</a></li>
+					{volist name="nav" id="nas"}
+					{eq name="nas['level']" value="0"}
+					<li><a href="{:url($nas['template'], ['id' => $nas['id']])}" <?php if(strstr($nas['template'], $request->action())){ ?> class="active" <?php } ?> >{$nas.name}</a>
+						<?php if (in_array($nas['id'], $pid)) {?>
+						<ul>
+							{volist name="nav" id="son"}
+							{eq name="son['parentid']" value="$nas['id']"}
+							<li><a href="">{$son.name}</a></li>
+							{/eq}
+							{/volist}
+						</ul>
+						<?php }?>
+					</li>
+					{/eq}
+					{/volist}
+				</ul>
+			</nav>
+			<div class="search">
+				<span class="sea_x">
+					<input type="" name="" id="" placeholder="请输入关键词">
+					<i class="fa fa-search"></i>		  	
+				</span>
+				<!-- <span class="y_z">
+					<a href="" class="zh active">中</a><a href="" class="en">En</a>
+					
+				</span> -->
+			</div>
+		</div>
+		
+	</div>

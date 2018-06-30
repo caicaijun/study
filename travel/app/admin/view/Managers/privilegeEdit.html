@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="/public/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/public/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="/public/manage/css/xenon-core.css">
+	<script src="/public/common/js/jquery.min.js"></script>
+	<script src="/public/manage/js/catetree.js"></script>
+	<script src="/public/manage/js/system.js"></script>
+    <script src="/public/layer/layer.js"></script>
+</head>
+<body class="page-body">
+
+
+<div class="page-container">
+		{include file='Common/web_menu' }
+		
+		<div class="main-content">
+
+			{include file='Common/web_header' }
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">权限管理</h3>
+							<button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='{:url('managers/privilegelst')}'">
+                            	<i class="fa-plus"></i><span>权限列表</span>
+                            </button>
+						</div>
+						<div class="panel-body">
+
+                            <form action="" method="post" id="myform" name="myform">
+                                <table width="100%" class="table table-bordered table-striped dataTable" id="list-table" role="grid" aria-describedby="example1_info">     
+                                    <tbody>
+                                    <tr>
+                                        <th width="120"><i class="require-red">*</i>上级权限：</th>
+                                        <td>
+                                            <select name="parentid" id="parentid" class="form-control">
+                                             <option value="0">顶级权限</option>
+                                                {volist name="privileges" id="vo"}
+                                                <option value="{$vo.id}" {if condition="$vo['id'] eq $pri['id']"} style='display:none'{/if} {if condition="$vo['id'] eq $pri['parentid']"}selected{/if}>
+                                                    <?php echo str_repeat('-',$vo['level']*4);?>{$vo.pri_name}
+                                                </option>
+                                           		{/volist}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                        <tr>
+                                            <th>权限名称：</th>
+                                            <td><input class="form-control form-w20" id="pri_name" name="pri_name" size="50" value="{$pri.pri_name}" type="text"></td>
+                                        </tr> 
+                                       
+                                         <tr>
+                                            <th>模块名称：</th>
+                                            <td><input name="mname" type="text" class="form-control form-w20" id="mname" value="{$pri.mname}" size="50"></td>
+                                        </tr>
+                                        <tr>
+                                          <th>控制器名称：</th>
+                                            <td><input name="cname" type="text" class="form-control form-w20" id="cname" value="{$pri.cname}" size="50"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>方法名称：</th>
+                                            <td><input name="aname" type="text" class="form-control form-w20" id="aname" value="{$pri.aname}" size="50"></td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <td>
+                                                <input name='id' value="{$pri.id}" type="hidden">
+                                                <input class="btn btn-info" value="提交" type="submit">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                            </form>
+					  </div>
+					</div>
+				</div>
+			</div>
+
+    {include file='Common/web_footer' }
+            
+</div>		
+</div>
+</body>
+</html>            

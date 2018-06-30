@@ -1,0 +1,37 @@
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">PageAdmin cms</h1>
+        <p class="description">印象未来 网站管理系统</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb">
+            <li><a href="{:url('index/index')}" target="_blank"><i class="fa-home"></i>网站首页</a></li>
+            <li><a href="{:url('system/cache')}"><i class="fa-undo"></i>清除缓存</a></li>
+            <li><a href="Managers/addeditadmin/id/"><i class="fa-user"></i><?php echo $manager['role']['rolename'] . ':' . $manager['name'];?></a></li>
+            <li><a href="{:url('index/admin/login/loginout')}"><i class="fa-sign-out"></i>退出系统</a></li>
+        </ol>
+    </div>
+</div>	
+<script type="application/javascript">
+$(function () {
+  $('#loginout').click(function(){
+	 layer.confirm('您确定退出吗？', {
+	  btn: ['确定','取消']
+	}, function(){
+		
+		jQuery.ajax({
+		  url: '__MODULE__/Admin/logout',
+		  type: "post",
+		  dataType: "json",
+		  data: {},
+		  success: function (json) {
+			var d = json.status;
+			window.location.href="__MODULE__/login"; 
+		  }
+		});
+	}, function(){}); 
+  })
+  
+})
+</script>

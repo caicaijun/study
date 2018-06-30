@@ -1,0 +1,5 @@
+namespace Yxadmin\Controller;
+use Think\Controller;
+class ArticleController extends CommonController {
+
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="/public/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/public/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="/public/manage/css/xenon-core.css">
+	<script src="/public/common/js/jquery.min.js"></script>
+	<script src="/public/manage/js/catetree.js"></script>
+	<script src="/public/manage/js/system.js"></script>
+  <script src="/public/layer/layer.js"></script>
+</head>
+<body class="page-body">
+
+
+<div class="page-container">
+	{include file='Common/web_menu'}
+		<div class="main-content">
+			{include file='Common/web_header'}
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel ">
+						<div class="panel-heading">
+                            <h3 class="panel-title">文章栏目</h3>
+							<button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='{:url('article/cate', ['type' => 'add'])}'">
+								<i class="fa-plus"></i><span>添加栏目</span>
+                            </button>
+						</div>
+						<div class="panel-body">
+ <button class="btn bg-navy" type="button" onClick="tree_open();"><i class="fa fa-angle-double-up"></i>收缩</button>
+<table width="100%" class="table table-bordered table-striped dataTable" id="list-table" role="grid" aria-describedby="example1_info">
+      <tr>
+         <th width="80">ID</th>
+         <th>分类名称</th>
+         <th width="160" align="center">模板</th>
+         <th width="80" align="center">导航</th>
+         <th width="100">排序</th>
+         <th width="150">操作</th>
+      </tr>
+    </thead>
+	<tbody>
+	{volist name="cates" id="vo"}
+    <tr role="row" align="center" class="{$vo.level}" id="{$vo.level}_{$vo.id}" dir="{$vo.level}" {gt name="$vo['level']" value="0"} style="display:none" {/gt}>
+         <td>{$vo.id}</td>
+	         <td align="left" style="padding-left:<?php echo ($vo['level'] * 4); ?>em">
+	         <?php if (!empty($vo['son'])) { ?>
+	           <span class="glyphicon glyphicon-plus btn-warning" id="icon_{$vo.level}_{$vo.id}" aria-hidden="false" onClick="rowClicked(this)" ></span>&nbsp;
+	         <?php } ?>
+	          <span>{$vo.name}</span>
+	         </td>
+         <td>{$vo.template}</td>
+        <td>
+         	<img width="20" height="20" data-url="{:url('article/navigation')}" src="/public/manage/images/{eq name="$vo.navshow" value="1"}yes.png{else /}/cancel.png{/eq}" onClick="changeTableVal('articlecate','id','{$vo.id}','navshow',this)"/>
+         </td>
+         <td><input onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onChange="updateSort(this)" data-id='{$vo.id}' data-url="{:url('article/catesort')}" size="4" class="common-input form-control form-w100" value="{$vo.sort}" type="text"></td>
+         <td>
+          <a onClick="delfunc_all(this)" data-url="{:url('article/catedel', ['cate_id' => $vo['id']])}"  data-id="{$vo.id}" class="btn btn-danger btn-sm btn-icon pull-right">删除</a>
+          <a href="{:url('article/cate', ['cate_id' => $vo['id']])}" class="btn btn-success btn-sm btn-icon pull-right">修改</a>
+        </td>
+       </tr>
+   	{/volist}
+
+   </tbody>
+</table>
+
+					  </div>
+					
+					</div>
+				</div>
+			</div>
+
+			{include file='Common/web_footer'}
+            
+</div>		
+</div>
+</body>
+</html>            

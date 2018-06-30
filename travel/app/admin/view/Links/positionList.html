@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/xenon-core.css">
+	<script src="__PUBLIC__/manage/js/jquery-1.11.1.min.js"></script>
+ 	<script src="__PUBLIC__/manage/js/system.js"></script>
+    <script src="__PUBLIC__/layer/layer.js"></script>
+</head>
+<body class="page-body">
+
+
+	
+	<div class="page-container">
+		<include file='Common/web_menu' />
+		
+		<div class="main-content">
+			
+            
+            
+			<include file='Common/web_header' />
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">链接栏目列表</h3>
+							
+							
+						</div>
+						<div class="panel-body">
+							   
+                            
+                            <button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='__CONTROLLER__/position'">
+                            	<i class="fa-plus"></i><span>添加栏目</span>
+                            </button>
+                        
+                            <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>栏目ID</th>
+                                        <th>栏目名称</th>
+                                        <th>栏目描述</th>
+                                       <!-- <th>状态</th>-->
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <foreach name="list" item="vo" key="k" >
+                                    <tr>
+                                       <td>{$vo.position_id}</td>
+                                       <td>{$vo.position_name}</td>
+                                       <td>{$vo.position_desc}</td>
+                                       <!--<td>
+                                       		<img width="20" height="20" src="__PUBLIC__/images/<if condition='$vo[is_open] eq 1'>yes.png<else />cancel.png</if>" onClick="changeTableVal('ad_position','position_id','{$vo.position_id}','is_open',this)"/>
+                                       </td>-->
+                                        <td>
+                                            <a href="{:U('Yxadmin/Links/position',array('act'=>'edit','position_id'=>$vo['position_id']))}" class="btn btn-success btn-sm btn-icon pull-right mright">编辑00</a>
+                                            <!--<a href="{:U('Yxadmin/Links/adList',array('pid'=>$vo['position_id']))}" class="btn btn-success btn-sm btn-icon pull-right mright">查看</a>
+                                            -->
+                                        </td>
+                                    </tr>		
+                              </foreach>
+                                </tbody>
+                            </table>
+						
+							{$page}
+						
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			
+            
+    <include file='Common/web_footer' />
+            
+</div>		
+</div>
+</body>
+</html>

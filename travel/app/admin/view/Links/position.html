@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/xenon-core.css">
+	<script src="__PUBLIC__/manage/js/jquery-1.11.1.min.js"></script>
+    <script src="__PUBLIC__/check/jquery.validate.js"></script>
+    <script src="__PUBLIC__/check/jquery.addvalidate.js"></script>
+    <script src="__PUBLIC__/manage/js/form.js"></script>
+</head>
+<body class="page-body">
+
+
+	
+	<div class="page-container">
+		<include file='Common/web_menu' />
+		
+		<div class="main-content">
+			
+            
+            
+			<include file='Common/web_header' />
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">添加栏目</h3>
+							
+							
+						</div>
+						<div class="panel-body">
+							   
+      
+                            
+                            <button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='__CONTROLLER__/postionlist'">
+                            	<i class="fa-mail-reply"></i><span>返回栏目</span>
+                            </button>
+                        	
+                            <form method="post" id="addeditform" name="addeditform" action="__CONTROLLER__/positionHandle">             
+                             <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td width="110" class="col-sm-2">名称：</td>
+                                    <td width="1074" class="col-sm-8">
+                                      <input type="text" class="form-control form-w40" name="position_name" value="{$info.position_name}" required />
+                                  </td>
+                                </tr>  
+                                <tr>
+                                    <td>描述：</td>
+                                    <td>
+                                    	<textarea class="form-control form-w50" cols="5" id="field-5" name="position_desc">{$info.position_desc}</textarea>
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>是否启用：</td>
+                                    <td>
+                      					<input type="radio" name="is_open" value="1" <if condition="$info[is_open] eq 1"> checked="checked"</if>> 开启
+                      					<input type="radio" name="is_open" value="0" <if condition="$info[is_open] eq 0"> checked="checked"</if>> 关闭
+                                    </td>
+                                </tr>                                
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                	<td><input type="hidden" name="act" value="{$act}">
+                                		<input type="hidden" name="position_id" value="{$info.position_id}">
+                                	</td>
+                                	<td class="text-right"><input class="btn btn-primary" type="submit" onClick="adsubmit()" value="保存"></td></tr>
+                                </tfoot>                               
+                                </table>
+							</form>
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			
+            
+    <include file='Common/web_footer' />
+            
+</div>		
+</div>
+</body>
+</html>

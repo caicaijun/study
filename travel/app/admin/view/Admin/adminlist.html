@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+   <link rel="stylesheet" type="text/css" href="<?php echo ADMIN_PUC;?>/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo ADMIN_PUC;?>/css/main.css"/>
+    <script type="text/javascript" src="<?php echo ADMIN_PUC;?>/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="<?php echo ADMIN_PUC;?>/js/jquery-1.4.2.min.js"></script>
+</head>
+<body>
+<include file='Common/A_top' />
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <include file='Common/A_left' />
+    </div>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">管理员管理</span></div>
+        </div>
+      
+      
+      
+     	
+      
+      
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="__CONTROLLER__/add"><i class="icon-font"></i>新增管理员</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>
+                            <input type="submit" id="button" value="删 除" formaction='__CONTROLLER__/bdel' form='myform' onClick="return confirm('您确定删除吗？')">
+                        </a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                          <th width="30" height="23" class="tc"><input class="allChoose"  id='check' name="" type="checkbox"></th>
+                            <th width="60">ID</th>
+                            <th>管理员名称名称</th>
+                            <th width="120">&nbsp;</th>
+                            <th width="80">操作</th>
+                        </tr>
+                        <volist name="admin" id="vo">
+                        <tr>
+                            <td class="tc"><input class='check' name="ids[]" value="<{$vo.id}>" type="checkbox"></td>
+                            <td><{$vo.id}></td>
+                            <td><{$vo.username}></td>
+                            <td><{$vo.rolename}></td>
+                            <td>
+								<a class="link-update" href="__CONTROLLER__/edit/id/<{$vo.id}>">修改</a>
+                                <a class="link-del" href="__CONTROLLER__/del/id/<{$vo.id}>" onClick="return confirm('您确定删除吗？')">删除</a>
+							</td>
+                        </tr>
+                        </volist>
+                        <tr>
+                            <td class="tc">&nbsp;</td>
+                            <td>&nbsp;</td>
+                          <td>                           </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <div class="list-page"><{$page}></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$("#check").die('click').live('click', function() {
+        if($(this).attr('checked')){
+            $('.check').attr('checked','checked');
+        }else{
+            $('.check').removeAttr('checked');
+        }
+    })
+</script>

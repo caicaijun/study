@@ -1,0 +1,73 @@
+<div class="sidebar-menu toggle-others fixed">
+
+	<div class="sidebar-menu-inner">	
+
+		<header class="logo-env">
+			<!-- logo -->
+			<div class="logo" style="text-align: center;">
+				<img src="/public/admin/images/yxwl.png" width="66" alt="" />
+			</div>
+		</header>
+		<ul id="main-menu" class="main-menu">
+			<li>
+				<p><a href="{:url('index/index')}" style="margin-left:20px;">网站首页</a></p>
+				<a href="javascript:;"><i class="fa-cog"></i><span class="title">网站设置</span></a>
+				<ul <?php if (strstr($_SERVER['REQUEST_URI'], 'system/index')) {?>style="display:block" <?php }?> >
+					<li><a href="{:url('system/index')}"><span class="title" <?php if (strstr($_SERVER['REQUEST_URI'], 'system/index')) { ?>style="color:#fff;" <?php } ?>>基本配置</span></a></li>
+                           <!--   <li><a href="__MODULE__/System/cleanCache"><span class="title">清除缓存</span></a></li>
+                           <li><a href="__MODULE__/System/databackup"><span class="title">数据备份</span></a></li>
+                           <li><a href="__MODULE__/System/datareduction"><span class="title">数据还原</span></a></li> -->
+                       </ul>
+                   </li>
+                   <li>
+                   	<a href="javascript:;"><i class="fa-wrench"></i><span class="title">系统管理员</span></a>
+                   	<ul <?php if (strstr($_SERVER['REQUEST_URI'], 'managers')) { ?>style="display:block" <?php } ?> >
+                   		<li><a href="{:url('managers/adminlist')}" <?php if (strstr($_SERVER['REQUEST_URI'], 'adminlist')) { ?>style="color:#fff;" <?php } ?> ><span class="title">管理员</span></a></li>
+                   		<li><a href="{:url('managers/Privilegelst')}" <?php if (strstr($_SERVER['REQUEST_URI'], 'Privilegelst')) { ?>style="color:#fff;" <?php } ?> ><span class="title">权限管理</span></a></li>
+                   		<li><a href="{:url('managers/rolelst')}" <?php if (strstr($_SERVER['REQUEST_URI'], 'rolelst')) { ?>style="color:#fff;" <?php } ?>  ><span class="title">角色管理</span></a></li>
+                   	</ul>
+                   </li>
+                   <li>
+                   	<a href="javascript:;"><i class="fa fa-align-justify"></i><span class="title">文章管理</span></a>
+                   	<ul <?php if (strstr($_SERVER['REQUEST_URI'], 'article')) { ?>style="display:block" <?php } ?>>
+                   		<li><a href="{:url('article/catelist')}"><span class="title"  <?php if (strstr($_SERVER['REQUEST_URI'], 'catelist')) { ?>style="color:#fff;" <?php } ?> >栏目管理</span></a></li>
+                   		<li><a href="{:url('article/articlelist')}"><span class="title" <?php if (strstr($_SERVER['REQUEST_URI'], 'articlelist')) { ?>style="color:#fff;" <?php } ?>>文章管理</span></a></li>
+                   	</ul>
+                   </li>
+                   <li>
+                   	<a href="javascript:;"><i class="fa-star"></i><span class="title">广告管理</span></a>
+                   	<ul <?php if (strstr($_SERVER['REQUEST_URI'], 'ad/')) { ?>style="display:block" <?php } ?> >
+                   		<li><a href="{:url('ad/positionlist')}"><span class="title"  <?php if (strstr($_SERVER['REQUEST_URI'], 'positionlist')) { ?>style="color:#fff;" <?php } ?> >广告栏目</span></a></li>
+                   		<li><a href="{:url('ad/adlist')}"><span class="title"  <?php if (strstr($_SERVER['REQUEST_URI'], 'adlist')) { ?>style="color:#fff;" <?php } ?> >广告列表</span></a></li>
+                   	</ul>
+                   </li>
+                   <!--  <li>
+						<a href="javascript:;"><i class="fa-link"></i><span class="title">链接管理</span></a>
+						<ul <if condition='CONTROLLER_NAME eq "Links"'>style="display:block"</if>>
+							<li><a href="__MODULE__/Links/positionList"><span class="title">链接栏目</span></a></li>
+                            <li><a href="__MODULE__/Links/linkslist"><span class="title">链接列表</span></a></li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="javascript:;"><i class="fa-star"></i><span class="title">咨询管理</span></a>
+						<ul <if condition='CONTROLLER_NAME eq "Zixun"'>style="display:block"</if>>
+							<li><a href="__MODULE__/Zixun/zixunList"><span class="title">咨询列表</span></a></li>
+						</ul>
+					</li> -->
+					<li>
+						<a href="javascript:;"><i class="fa-star"></i><span class="title">核心系统管理</span></a>
+						<ul <?php if (strstr($_SERVER['REQUEST_URI'], 'template') || strstr($_SERVER['REQUEST_URI'], 'seo')) { ?>style="display:block" <?php } ?>>
+							<li>
+								<a href="{:url('seo/seoList')}"><span class="title" <?php if (strstr($_SERVER['REQUEST_URI'], 'seo')) { ?>style="color:#fff;" <?php } ?> >seo列表</span></a>
+							</li>
+							<li>
+								<a href="{:url('system/template')}"><span class="title"  <?php if (strstr($_SERVER['REQUEST_URI'], 'template')) { ?>style="color:#fff;" <?php } ?> >前台模板列表</span></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+			</div><!--sidebar-menu-inner end-->
+			
+		</div>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	<title>印象未来网站管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/manage/css/xenon-core.css">
+	<script src="__PUBLIC__/manage/js/jquery-1.11.1.min.js"></script>
+	<script src="__PUBLIC__/manage/js/system.js"></script>
+    <script src="__PUBLIC__/layer/layer.js"></script>
+</head>
+<body class="page-body">
+
+
+	
+	<div class="page-container">
+		<include file='Common/web_menu' />
+		
+		<div class="main-content">
+			
+            
+            
+			<include file='Common/web_header' />
+			<!-- Responsive Table -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel ">
+						<div class="panel-heading">
+							<h3 class="panel-title">添加链接</h3>
+							
+							
+						</div>
+						<div class="panel-body">
+							   
+      
+                            
+                            <button class="btn btn-info btn-icon btn-icon-standalone pull-right" onClick="location.href='{:U('Links/links')}'">
+                            	<i class="fa-plus"></i><span>添加链接</span>
+                            </button>
+                        
+                    <table width="100%" cellspacing="0" class="table table-small-font table-bordered table-striped">
+                   <thead>
+		                   <tr role="row">
+                               <th width="60">id</th>
+                               <th width="160">链接位置</th>
+		                     <th width="160">链接名称</th>	
+			                   <th width="100">链接图片</th>	                   
+		                     <th>链接</th>
+                              <!-- <th width="80">新窗口</th>-->
+	                  	     <th width="80">排序</th>
+	                  	     <th width="160">操作</th>
+                     </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="list" item="vo" key="k" >
+                            <tr role="row">    
+                             <td>{$vo[links_id]}</td>
+                             <td>{$links_position_list[$vo[pid]][position_name]}</td>
+		                     <td>{$vo.links_name}</td>	                    
+		                     <td><if condition="!empty($vo['links_pic'])"><img src="__ROOT__/{$vo.links_pic}" width="80px" height="50px"></if></td>
+		                     <td>{$vo.links_link}</td>
+		                    <!-- <td><img width="20" height="20" src="__PUBLIC__/manage/images/<if condition='$vo[target] eq 1'>yes.png<else />cancel.png</if>" onClick="changeTableVal('ad','links_id','{$vo.links_id}','target',this)"/>
+		                     </td> -->                                    
+		                     <td>
+		                       <input onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onChange="updateSort(this)" data-id="{$vo.links_id}" data-url="__CONTROLLER__/listsort" size="4" class="common-input form-control form-w100" value="{$vo.orderby}" type="text">	
+		                     </td>
+		                     <td>
+		                      <a onClick="delfuncs(this)" data-url="__CONTROLLER__/listdel" data-id="{$vo.links_id}" class="btn btn-danger btn-sm btn-icon pull-right">删除</a>
+				              <a href="{:U('Links/links',array('act'=>'edit','links_id'=>$vo['links_id']))}" class="btn btn-success btn-sm btn-icon pull-right">修改</a>
+				    		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+						
+						  {$page}
+						
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			
+            
+    <include file='Common/web_footer' />
+            
+</div>		
+</div>
+</body>
+</html>
